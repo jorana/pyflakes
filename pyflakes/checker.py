@@ -573,10 +573,11 @@ class ExportBinding(Binding):
     """
 
     def __init__(self, name, source, scope):
-        if '__all__' in scope and isinstance(source, ast.AugAssign):
-            self.names = list(scope['__all__'].names)
-        else:
-            self.names = []
+        # This does not work for https://github.com/XENONnT/straxen/tree/master/straxen
+        # if '__all__' in scope and isinstance(source, ast.AugAssign):
+        #     self.names = list(scope['__all__'].names)
+        # else:
+        self.names = []
 
         def _add_to_names(container):
             for node in container.elts:
